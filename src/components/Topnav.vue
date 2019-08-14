@@ -178,11 +178,4 @@ export default {
   width: 1200px;
   margin: 0 auto;
 }
-.dy{
-  width: 100px;
-  height: 20px;
-}
-.asf{
-  width: 100px;
-}
 </style>
