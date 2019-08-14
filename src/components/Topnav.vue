@@ -9,14 +9,14 @@
         <el-dialog title="提示" :visible.sync="dialogVisible" width="30%">
           <el-tabs v-model="activeName" @tab-click="handleClick">
             <el-tab-pane label="登陆" name="login">
-              <el-form ref="form" :model="form" label-width="80px">
-                <el-form-item label="用户名：">
+              <el-form ref="forma" :model="form" label-width="80px">
+                <el-form-item prop="name" label="用户名：">
                   <el-input v-model="form.name"></el-input>
                 </el-form-item>
-                <el-form-item label="密码：">
+                <el-form-item prop="region" label="密码：">
                   <el-input v-model="form.region"></el-input>
                 </el-form-item>
-                <el-button @click="dbn" type="danger">登陆</el-button>
+                <el-button @click="dbn('forma')" type="danger">登陆</el-button>
               </el-form>
             </el-tab-pane>
             <el-tab-pane label="注册" name="register">
@@ -43,7 +43,7 @@
       <div v-else class="lj">
         <el-button type="info">个人中心</el-button>
         <el-button type="warning">{{ nick }}</el-button>
-        <el-button @click="LogoutHandler" type="danger">登出</el-button>
+        <el-button @click="LogoutHandler()" type="danger">登出</el-button>
       </div>
     </div>
   </div>
@@ -99,7 +99,7 @@ export default {
         this.activeName = "register";
       }
     },
-    dbn() {
+    dbn(forma) {
       if (this.activeName === "login") {
         const result = posthttp("/api/login", {
           username: this.form.name,
@@ -117,12 +117,14 @@ export default {
               this.dialogVisible = false;
               // 本地存储
               localStorage.setItem("username", data[0].username);
+              this.$refs[forma].resetFields();
             } else {
               // 登陆失败
               this.$message({
                 message: data.msg,
                 type: "warning"
               });
+              this.$refs[forma].resetFields();
             }
           })
           .catch(error => {
