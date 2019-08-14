@@ -182,4 +182,7 @@ export default {
   width: 100px;
   height: 20px;
 }
+.asf{
+  width: 100px;
+}
 </style>
