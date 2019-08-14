@@ -178,7 +178,4 @@ export default {
   width: 1200px;
   margin: 0 auto;
 }
-.jk{
-  width: 110px;
-}
 </style>
