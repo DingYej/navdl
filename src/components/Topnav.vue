@@ -178,6 +178,7 @@ export default {
   width: 1200px;
   margin: 0 auto;
 }
+<<<<<<< HEAD
 .dy{
   width: 100px;
   height: 20px;
@@ -185,4 +186,6 @@ export default {
 .ads{
   width: 100px;
 }
+=======
+>>>>>>> dingye
 </style>
